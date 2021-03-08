@@ -1,27 +1,49 @@
 # WhiteboardApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.3.
 
-## Development server
+# CIC-IBM Description of the Virtual white board
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Roles
+* Frontend
+* Backend
+* Fullstack
 
-## Code scaffolding
+## Description
+You are making a virtual white board for your team to hang up interesting tid bits and motivational things. The whiteboard can be used for serious things but you know your team and it's more than likely going to be the funniest youtube videos of the week. 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+The virtual white board should be accesisble to everyone on the team through a webpage and will in the future we shown on a big screen for all to enjoy. You decide what this board could be used for, is it just for fun motivational things such as videos and images or is it for current task or deadlines that needs attention? That is up to you. 
 
-## Build
+Good luck future CIC dev!
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Tasks
+all tasks are described as "user stories" - simply put a user wants to be able to do this, you come up with how they are going to do it. **You're not meant to do all stories but as many as you can and in no particular order.**
+### Login
 
-## Running unit tests
+* Sam and Bertha wants to use the virtual whiteboard, to do this they must first login with the team given login
+* Sam and Bertha are sick and tired of random people deleting their posts, they want their own logins and to only be able to delete their own posts
+* Sam has forgotten his password and would like to reset it 
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Virtual board
 
-## Running end-to-end tests
+*  Sam wants to create a new piece of text to put onto the virtual board so that he can write a motivational text, he wants it to be as long as a tweet 
+* Bertha would like to be able to put links to images onto the board
+* Bertha would love if she could post a youtube video that she saw last week
+* Bertha would like to see media be rendered on the board
+* Sam wants to delete a post he's created, the youtube video was not as fun as he remembered it
+* Bertha would like to be able to put a comment on posts so that Sam can see that she's seen the post
+* Bertha would like to be able to "like" a post
+* Bertha's lunch has been stolen from the fridge and would like to put an anonymous post up that tells the thief off
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+### Role management
 
-## Further help
+* Sam would like to become a moderator for the virtual board to make sure that bad stuff is not posted, when he is a moderator he can delete all posts
+* Sam would like to add Jennifer as a new user of the whiteboard and give her a login
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Account management
+* Sam does not like his name on the whiteboard and would like to change it to "Sam Wise" 
+* Sam would like to be able to change his password, Bertha keeps logging in and posting for him
+
+
+### Note on roles
+You do not need a graphical interface if you are a backender, as you do not need a backend if you are a frontender! Mock what you can or skip tasks that does not make sense if that is not what you are applying for. 
+
