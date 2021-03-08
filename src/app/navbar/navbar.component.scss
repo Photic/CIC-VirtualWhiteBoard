@@ -1,0 +1,56 @@
+.mat-toolbar.mat-primary {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  height: 45px;
+  z-index: 1;
+}
+
+.toolbar {
+  display: flex;
+  width: 100vw;
+  text-align: center;
+  justify-content: space-around;
+  align-content: space-around;
+}
+
+.text-aligned {
+  text-align: center;
+  justify-self: center;
+  align-self: center;
+}
+
+#grid-icon-span {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.gridSize {
+  position: absolute;
+  max-width: 150px;
+  width: 35vw;
+  bottom: 10vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.gridResizeSelected {
+  display: flex;
+}
+
+.gridResizeDeSelected {
+  display: none;
+}
+
+
+app-photo {
+  width: 100vw;
+  height: 100vh;
+  margin-bottom: 45px;
+  background-color: #1e1e1e;
+}

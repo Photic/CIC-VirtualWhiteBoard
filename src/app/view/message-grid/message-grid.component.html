@@ -1,0 +1,7 @@
+<gridster [options]="options">
+    <gridster-item [item]="item" *ngFor="let item of whiteboard" class="grid-item">
+        <div>
+          <app-grid-item-image [item]="item" (event)="eventHandler($event)"></app-grid-item-image>
+        </div>
+      </gridster-item>
+</gridster>

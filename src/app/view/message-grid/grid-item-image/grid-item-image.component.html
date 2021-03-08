@@ -1,0 +1,27 @@
+<div class="container">
+    <mat-card class="card_class">
+        <mat-card-header class="header_class">
+            <mat-card-title>{{title}}</mat-card-title>
+            <mat-card-subtitle>{{subtitle}}</mat-card-subtitle>
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item [disabled]="disabled" (click)="edit()">
+                    <mat-icon>edit</mat-icon>
+                    <span>Edit</span>
+                </button>
+                <button mat-menu-item [disabled]="disabled" (click)="delete()">
+                    <mat-icon>delete</mat-icon>
+                    <span>Delete</span>
+                </button>
+            </mat-menu>
+        </mat-card-header>
+        <img mat-card-image [src]="imageUrl">
+        <mat-card-content>
+            <p>
+                {{body}}
+            </p>
+        </mat-card-content>
+    </mat-card>
+</div>

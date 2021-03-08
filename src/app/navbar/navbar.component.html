@@ -1,0 +1,25 @@
+<app-message-grid #messageGrid [events]="eventsSubject.asObservable()"></app-message-grid>
+
+<mat-toolbar color="primary">
+  <div class="toolbar">
+    <a>{{team}}</a>
+    <button type="button" aria-label="logout" mat-raised-button color="accent" (click)="addGrid()">
+      <span class="text-aligned">Add Item</span>
+      <div class="gridSize" [ngClass]="{'gridResizeSelected': this.addItems, 'gridResizeDeSelected': !this.addItems}">
+        <button type="button" mat-raised-button color="accent" (click)="addSmallItem()">
+          <span class="text-aligned">
+            Small
+          </span>
+        </button>
+        <button type="button" mat-raised-button color="accent" (click)="addLargeItem()">
+          <span class="text-aligned">
+            Large
+          </span>
+        </button>
+      </div>
+    </button>
+    <button type="button" aria-label="logout" mat-raised-button color="accent" (click)="logout()">
+      <span class="text-aligned">Logout</span>
+    </button>
+  </div>
+</mat-toolbar>
