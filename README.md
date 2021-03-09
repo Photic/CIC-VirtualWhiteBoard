@@ -43,21 +43,21 @@ I chose nodejs/express because I think it is an easy to use backend service, and
 
 ## Server
 Used:
-  - "bcrypt": "^5.0.1",
-  - "dotenv": "^8.2.0",
-  - "express": "^4.17.1",
-  - "jsonwebtoken": "^8.5.1",
-  - "log4js": "^6.3.0",
-  - "sqlite": "^4.0.19",
-  - "sqlite3": "^5.0.2"
+  - "bcrypt": "^5.0.1", used to encrypt user password before it is stored in the database. Also used to validate said password when logging in again. 
+  - "dotenv": "^8.2.0", easy way to have instant specific variables. This would normally not be populated on git. 
+  - "express": "^4.17.1", easy server.
+  - "jsonwebtoken": "^8.5.1", To validate previous logins, and validate all endpoints after login / user creation.
+  - "log4js": "^6.3.0", Simple logging tool, have the defaults info, error, debug. Nice to have.
+  - "sqlite": "^4.0.19", sqlite3.Database wrapper.
+  - "sqlite3": "^5.0.2" Simple local database, was an attempt to not complicated things, not sure I succeeded.
 
 Also Installed:
-  - "archiver": "^5.0.0",
-  - "moment": "^2.27.0",
+  - "archiver": "^5.0.0", The plan was to save images locally if people wanted to upload them instead of just using an image url, mg would have been required as well.
+  - "moment": "^2.27.0", Moment was just meant for easy time keeping / conversion.
   - "moment-timezone": "^0.5.31",
-  - "socket.io": "^2.3.0",
+  - "socket.io": "^2.3.0", socket.io was meant to be used as a live update, login would init the frontend with all posts from the database with a normal http.get, and all following interaction would come from a socket. 
   - "socketio-jwt": "^4.6.2",
-  - "multer": "^1.4.2",
+  - "multer": "^1.4.2", Again file handling.
 
 ## Client
 Dep Used:
@@ -72,7 +72,7 @@ Dep Used:
   - "@angular/platform-browser-dynamic": "~11.2.4",
   - "@angular/router": "~11.2.4",
   - "@auth0/angular-jwt": "^5.0.2",
-  - "angular-gridster2": "^11.1.3",
+  - "angular-gridster2": "^11.1.3", Allows me to create the card grid
   - "rxjs": "~6.6.0",
   - "tslib": "^2.0.0",
   - "zone.js": "~0.11.3"
