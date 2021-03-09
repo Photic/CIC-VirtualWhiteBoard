@@ -31,6 +31,8 @@
 # Init node_modules
 This is a project created with Angular / Angular Materials, nodejs / Express. So the project requires the latest version of nodejs install on the local machine or docker. 
 
+If only using Docker, skip to #building-to-docker.
+
 To initiate the project, run following:
 ```
 npm run init
