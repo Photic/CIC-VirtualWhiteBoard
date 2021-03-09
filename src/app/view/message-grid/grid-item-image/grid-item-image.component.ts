@@ -25,7 +25,7 @@ export class GridItemImageComponent implements OnInit {
   }
 
   public delete() {
-
+    
   }
 
   ngOnInit(): void {
@@ -39,6 +39,10 @@ export class GridItemImageComponent implements OnInit {
     if (localStorage.getItem('team').includes(this.item.team) || localStorage.getItem('team').includes(localStorage.getItem('user'))) {
       this.disabled = false;
     } else if (this.item.team === undefined) {
+      this.disabled = false;
+    }
+
+    if (localStorage.getItem('team').includes('moderator')) {
       this.disabled = false;
     }
   }

@@ -8,6 +8,12 @@ module.exports = {
     getAllPosts: () => {
         return 'SELECT * FROM gridItems';
     },
+    deleteSpecificPost: () => {
+        return 'DELETE FROM gridItems WHERE itemId = ?1 AND team = ?2'  
+    },
+    deleteSpecificPostModerator: () => {
+        return 'DELETE FROM gridItems WHERE itemId = ?'  
+    },
     createSmallImagePost: () => {
         return `INSERT INTO gridItems(cols, rows, title, team, picture, date) VALUES(?1, ?2, ?3, ?4, ?5, datetime('now', 'localtime'))`
     },

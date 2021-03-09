@@ -88,8 +88,6 @@ const sqlite_control = (() => {
         return res;
     }
 
-    
-
     return { // ? public
         dbQueryArgs: async (query, args) => {
             return await dbQueryArgs(query, args);

@@ -1,5 +1,5 @@
-# BUILD ME => "docker build -t nullergrisen/livsteen_rest ."
-# RUN ME => "docker run --restart=always --hostname livsteen_rest --name=livsteen_rest --memory=64m --cpuset-cpus=3 --net photicnet --ip 10.0.0.5 --publish=:49161:8080 --detach nullergrisen/livsteen_rest"
+# BUILD ME => "docker build -t nullergrisen/whiteboard-app ."
+# RUN ME => "docker run --restart=always --hostname whiteboard-app --name=whiteboard-app --memory=64m --cpuset-cpus=3 --net photicnet --ip 10.0.0.5 --publish=:49161:8080 --detach nullergrisen/whiteboard-app"
 
 # Specify node version.
 FROM node:14.5.0-slim
@@ -13,9 +13,6 @@ WORKDIR /usr/src/app
 
 # Add packages to new directory.
 COPY package*.json ./
-
-# Basic build tools
-# RUN apt update && apt install -y graphicsmagick
 
 # Install packages.
 RUN npm install

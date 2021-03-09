@@ -1,5 +1,15 @@
 # WhiteboardApp
 
+## Completed Backend
+    - Sam and Bertha wants to use the virtual whiteboard, to do this they must first login with the team given login
+    - Sam wants to create a new piece of text to put onto the virtual board so that he can write a motivational text, he wants it to be as long as a tweet 
+    - Sam wants to delete a post he's created, the youtube video was not as fun as he remembered it
+    - Bertha's lunch has been stolen from the fridge and would like to put an anonymous post up that tells the thief off
+
+## Completed Frontend
+    - Sam and Bertha wants to use the virtual whiteboard, to do this they must first login with the team given login
+    - Sam and Bertha are sick and tired of random people deleting their posts, they want their own logins and to only be able to delete their own posts
+    - Sam wants to create a new piece of text to put onto the virtual board so that he can write a motivational text, he wants it to be as long as a tweet 
 
 # CIC-IBM Description of the Virtual white board
 
@@ -19,24 +29,24 @@ Good luck future CIC dev!
 all tasks are described as "user stories" - simply put a user wants to be able to do this, you come up with how they are going to do it. **You're not meant to do all stories but as many as you can and in no particular order.**
 ### Login
 
-* Sam and Bertha wants to use the virtual whiteboard, to do this they must first login with the team given login
-* Sam and Bertha are sick and tired of random people deleting their posts, they want their own logins and to only be able to delete their own posts
+* Sam and Bertha wants to use the virtual whiteboard, to do this they must first login with the team given login !
+* Sam and Bertha are sick and tired of random people deleting their posts, they want their own logins and to only be able to delete their own posts !
 * Sam has forgotten his password and would like to reset it 
 
 ### Virtual board
 
-*  Sam wants to create a new piece of text to put onto the virtual board so that he can write a motivational text, he wants it to be as long as a tweet 
-* Bertha would like to be able to put links to images onto the board
-* Bertha would love if she could post a youtube video that she saw last week
-* Bertha would like to see media be rendered on the board
-* Sam wants to delete a post he's created, the youtube video was not as fun as he remembered it
+*  Sam wants to create a new piece of text to put onto the virtual board so that he can write a motivational text, he wants it to be as long as a tweet !
+* Bertha would like to be able to put links to images onto the board !
+* Bertha would love if she could post a youtube video that she saw last week 
+* Bertha would like to see media be rendered on the board 
+* Sam wants to delete a post he's created, the youtube video was not as fun as he remembered it !
 * Bertha would like to be able to put a comment on posts so that Sam can see that she's seen the post
 * Bertha would like to be able to "like" a post
-* Bertha's lunch has been stolen from the fridge and would like to put an anonymous post up that tells the thief off
+* Bertha's lunch has been stolen from the fridge and would like to put an anonymous post up that tells the thief off !
 
 ### Role management
 
-* Sam would like to become a moderator for the virtual board to make sure that bad stuff is not posted, when he is a moderator he can delete all posts
+* Sam would like to become a moderator for the virtual board to make sure that bad stuff is not posted, when he is a moderator he can delete all posts !
 * Sam would like to add Jennifer as a new user of the whiteboard and give her a login
 
 ### Account management

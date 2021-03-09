@@ -22,6 +22,7 @@ router.use(auth.authorize);
 router.get('/grid/get', sql.getAllPosts);
 router.post('/grid/small/new', sql.postSmallPost);
 router.post('/grid/large/new', sql.postLargePost);
+router.delete('/grid/post', sql.deletePost);
 
 // ! Users
 router.post('/user/get/team', sql.getUsersTeam);

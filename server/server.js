@@ -21,11 +21,11 @@ class Server {
         this.app.use('/api/v1', api);
 
         // Static dir
-        this.app.use(express.static(process.cwd() + "/public/whiteboard"));
+        this.app.use(express.static(process.cwd() + "/public/whiteboard-app"));
         this.app.use(express.static(__dirname + '/uploads'));
 
         this.app.get('*', (req, res) => {
-            res.sendFile(process.cwd() + '/public/whiteboard/index.html');
+            res.sendFile(process.cwd() + '/public/whiteboard-app/index.html');
         });
 
         // Create Server

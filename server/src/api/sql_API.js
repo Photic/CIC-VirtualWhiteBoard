@@ -25,10 +25,10 @@ const backup_control = (() => {
         const body = req.body;
         if (body.picture != null) { // gridItems(cols, rows, title, team, picture, date)
             const dbRes = await db_c.dbRunArgs(db_query.createSmallImagePost(), [body.cols, body.rows, body.title, body.team, body.picture])
-            return defaultResponse(dbRes, res);
+            return defaultResponse(dbRes, res, 'Post Created');
         } else { // gridItems(cols, rows, title, body, team, date)
             const dbRes = await db_c.dbRunArgs(db_query.createSmallTextPost(), [body.cols, body.rows, body.title, body.body, body.team]);
-            return defaultResponse(dbRes, res);
+            return defaultResponse(dbRes, res, 'Post Created');
         }
     }
 
@@ -40,12 +40,37 @@ const backup_control = (() => {
     async function postLargePost(req, res) { // gridItems(cols, rows, title, body, team, picture, date)
         const body = req.body;
         const dbRes = await db_c.dbRunArgs(db_query.createLargePost(), [body.cols, body.rows, body.title, body.body, body.team, body.picture]);
-        return defaultResponse(dbRes, res);
+        return defaultResponse(dbRes, res, 'Post Created');
     }
 
-    function defaultResponse(dbRes, res) {
+    /**
+     * @description Delete a specific post depending on moderator status or team.
+     * @param {*} req 
+     * @param {*} res 
+     */
+    async function deletePost(req, res) {
+        const body = req.body;
+        let dbRes;
+
+        if (!body.team.includes('moderator')) {
+            // Only teams can delete team posts, a team could just as well be a person.
+            dbRes = await db_c.dbRunArgs(db_query.deleteSpecificPost(), [body.itemId, body.team]);
+        } else {
+            // Only moderators can delete all team posts.
+            dbRes = await db_c.dbRunArgs(db_query.deleteSpecificPostModerator(), [body.itemId]);
+        }
+
+        return defaultResponse(dbRes, res, 'Post Deleted');
+    }
+
+    /**
+     * @description Handles all default responses to get rid of duplicate code
+     * @param {SQL.response} dbRes 
+     * @param {Express.response} res 
+     */
+    function defaultResponse(dbRes, res, success) {
         if (dbRes.changes === 1) {
-            return res.status(201).send({ msg: 'Post Created' });
+            return res.status(201).send({ msg: success });
         }
         return res.status(400).send({ msg: dbRes });
     }
@@ -53,6 +78,7 @@ const backup_control = (() => {
     async function getUsersTeam(req, res) {
         return await res.json({ msg: await JSON.stringify(await db_c.dbGetArgs(db_query.getSpecificUser(), [req.body.msg])) });
     }
+
 
     return { // ? public
         getAllPosts: async (req, res) => {
@@ -63,6 +89,9 @@ const backup_control = (() => {
         },
         postLargePost: async (req, res) => {
             return await postLargePost(req, res);
+        },
+        deletePost: async (req, res) => {
+            return await deletePost(req, res);
         },
         getUsersTeam: async (req, res) => {
             return await getUsersTeam(req, res);
