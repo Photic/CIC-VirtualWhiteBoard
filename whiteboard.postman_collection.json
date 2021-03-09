@@ -40,7 +40,7 @@
 			"response": []
 		},
 		{
-			"name": "edit user",
+			"name": "edit user team",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -67,6 +67,41 @@
 						"v1",
 						"user",
 						"edit"
+					]
+				},
+				"description": "create new user."
+			},
+			"response": []
+		},
+		{
+			"name": "edit user password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user\" : \"Sam@this.whiteboard.com\",\n    \"oldPassword\" : \"1234\",\n    \"newPassword\" : \"12345\"\n}\n\n// Sam can now login with 12345",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "0.0.0.0:8080/api/v1/user/edit/password",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"edit",
+						"password"
 					]
 				},
 				"description": "create new user."

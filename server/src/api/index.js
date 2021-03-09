@@ -27,5 +27,6 @@ router.delete('/grid/post', sql.deletePost);
 // ! Users
 router.post('/user/get/team', sql.getUsersTeam);
 router.post('/user/edit', sql.editUser);
+router.post('/user/edit/password', sql.editPassword);
 
 module.exports = router;

@@ -70,13 +70,29 @@ const backup_control = (() => {
         return defaultResponse(dbRes, res, 'User Edited');
     }
 
-    async function newPassword(req, res) {
-        let password;
+    async function editPassword(req, res) {
+        const body = req.body;
 
-        // generate salt to hash password
-        const salt = await bcrypt.genSalt(10);
-        // now we set user password to hashed password
-        password = await bcrypt.hash(body.password, salt);
+        const oldPassword = body.oldPassword;
+        const newPassword = body.newPassword;
+
+        const db_user = await db_c.dbGetArgs(db_query.getSpecificUser(), [body.user]).catch(error => logger.error(error));
+
+        if (await bcrypt.compare(oldPassword, db_user.password)) {
+            let password;
+            // generate salt to hash password
+            const salt = await bcrypt.genSalt(10);
+            // now we set user password to hashed password
+            password = await bcrypt.hash(newPassword, salt);
+
+            const dbRes = await db_c.dbRunArgs(db_query.editUserPassword(), [password, body.user]).catch(() => {
+                res.status(400).send({ msg: "Could not change password" });
+            });
+
+            return defaultResponse(dbRes, res, 'Password Changed');
+        }
+
+        res.status(400).send({ msg: "Wrong Password" });
     }
 
     /**
@@ -114,6 +130,9 @@ const backup_control = (() => {
         },
         editUser: async (req, res) => {
             return await editUser(req, res);
+        },
+        editPassword: async (req, res) => {
+            return await editPassword(req, res);
         }
     };
 })();

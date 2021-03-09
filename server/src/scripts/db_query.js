@@ -25,5 +25,8 @@ module.exports = {
     },
     editUserTeam: () => {
         return `UPDATE users SET team = ?1 WHERE username = ?2;`
+    },
+    editUserPassword: () => {
+        return `UPDATE users SET password = ?1 WHERE username = ?2;`
     }
 }
