@@ -22,10 +22,10 @@ const sqlite_control = (() => {
     }
 
     async function initTables(db) {
-        await db.exec(`CREATE TABLE IF NOT EXISTS users(username TEXT UNIQUE, password TEXT, team TEXT)`);
+        await db.exec(`CREATE TABLE IF NOT EXISTS users(username TEXT UNIQUE, password TEXT, team TEXT, name TEXT)`);
         await db.exec(`CREATE TABLE IF NOT EXISTS gridItems(cols INTEGER, rows INTEGER, y INTEGER DEFAULT 0, x INTEGER DEFAULT 0, itemId INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, body TEXT, team TEXT, picture TEXT, date TEXT)`);
-        await db.exec(`INSERT INTO users(username, password, team) VALUES('Bertha@this.whiteboard.com', '$2b$10$wYcqlPj70LglL392zDwq3eU7vspMA.K.35qi6qX3NLmNiW0QoDzw6', 'Team 1')`);
-        await db.exec(`INSERT INTO users(username, password, team) VALUES('Sam@this.whiteboard.com', '$2b$10$QEDBdA1b7X7nXCIcsvC2f.qAZ1lQtLCsp1rPimCt1uR3NEO2IaoCq', 'Team 2')`);
+        await db.exec(`INSERT INTO users(username, password, team, name) VALUES('Bertha@this.whiteboard.com', '$2b$10$wYcqlPj70LglL392zDwq3eU7vspMA.K.35qi6qX3NLmNiW0QoDzw6', 'Team 1', 'Bertha Majster')`);
+        await db.exec(`INSERT INTO users(username, password, team, name) VALUES('Sam@this.whiteboard.com', '$2b$10$QEDBdA1b7X7nXCIcsvC2f.qAZ1lQtLCsp1rPimCt1uR3NEO2IaoCq', 'Team 2', 'Sam Snam')`);
         await db.exec(`INSERT INTO gridItems(cols, rows, title, body, team, picture, date) VALUES(20, 24, 'Shiba Inu', 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
         A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
         bred for hunting.', 'Team 1', 'https://material.angular.io/assets/img/examples/shiba2.jpg', datetime('now', 'localtime'))`);
@@ -79,6 +79,13 @@ const sqlite_control = (() => {
         return res;
     }
 
+    async function dbEachLogDebug(query) {
+        const db = await getDb();
+        const res = await db.each(query, (e, d) => {logger.debug(d)});
+        await db.close();
+        return res;
+    }
+
     return { // ? public
         dbQueryArgs: async (query, args) => {
             return await dbQueryArgs(query, args);
@@ -91,6 +98,9 @@ const sqlite_control = (() => {
         },
         dbRunArgs: async (query, args) => {
             return await dbRunArgs(query, args);
+        },
+        dbEachLogDebug: async (query) => {
+            return dbEachLogDebug(query);
         }
     };
 })();

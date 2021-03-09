@@ -202,9 +202,8 @@ all tasks are described as "user stories" - simply put a user wants to be able t
 * Sam would like to add Jennifer as a new user of the whiteboard and give her a login !
 
 ### Account management
-* Sam does not like his name on the whiteboard and would like to change it to "Sam Wise" 
+* Sam does not like his name on the whiteboard and would like to change it to "Sam Wise" !
 * Sam would like to be able to change his password, Bertha keeps logging in and posting for him !
-
 
 ### Note on roles
 You do not need a graphical interface if you are a backender, as you do not need a backend if you are a frontender! Mock what you can or skip tasks that does not make sense if that is not what you are applying for. 

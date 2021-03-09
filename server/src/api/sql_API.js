@@ -2,12 +2,12 @@ const backup_control = (() => {
     // ? private
 
     // ! Imports
+    const logger = require('log4js').getLogger();
     const db_c = require('../control/sqlite_control');
     const db_query = require('../scripts/db_query');
     const bcrypt = require("bcrypt");
 
     // ! Functions
-
     /**
      * @description Get all posts contained withing the database
      * @param {*} req 
@@ -64,12 +64,22 @@ const backup_control = (() => {
         return defaultResponse(dbRes, res, 'Post Deleted');
     }
 
+    /**
+     * Only edits the users team data
+     * @param {*} req 
+     * @param {*} res 
+     */
     async function editUser(req, res) {
         const body = req.body;
         const dbRes = await db_c.dbRunArgs(db_query.editUserTeam(), [body.team, body.user]);
         return defaultResponse(dbRes, res, 'User Edited');
     }
 
+    /**
+     * Change users password
+     * @param {*} req 
+     * @param {*} res 
+     */
     async function editPassword(req, res) {
         const body = req.body;
 
@@ -86,13 +96,54 @@ const backup_control = (() => {
             password = await bcrypt.hash(newPassword, salt);
 
             const dbRes = await db_c.dbRunArgs(db_query.editUserPassword(), [password, body.user]).catch(() => {
-                res.status(400).send({ msg: "Could not change password" });
+                return res.status(400).send({ msg: "Could not change password" });
             });
 
             return defaultResponse(dbRes, res, 'Password Changed');
         }
 
-        res.status(400).send({ msg: "Wrong Password" });
+        return res.status(400).send({ msg: "Wrong Password" });
+    }
+
+    /**
+     * I tried the make this function more Dynamic just for fun, it can replace editTeam easy, but I would not let it replace change password. 
+     * @param {*} req 
+     * @param {*} res 
+     */
+    async function editUserDynamic(req, res) {
+        const body = req.body;
+        const db_user = await db_c.dbGetArgs(db_query.getSpecificUser(), [body.user]).catch(error => logger.error(error));
+
+        if (await bcrypt.compare(req.body.password, db_user.password)) {
+            let query = 'UPDATE users '
+            const end_quary = 'WHERE username = ?';
+            let counter = 1;
+            const edited_db_user = [];
+
+            for (let key in body) {
+                if (body.hasOwnProperty(key)) {
+                    if (!key.includes('user') && !key.includes('password')) {
+                        edited_db_user.push(body[key]);
+                        if (query.includes('SET')) {
+                            query = query + `, ${key} = ?${counter} `
+                        } else query = query + `SET ${key} = ?${counter} `
+                        counter++;
+                    }
+                }
+            }
+
+            query = query + end_quary + counter;
+            edited_db_user.push(db_user.username);
+
+            const dbRes = await db_c.dbRunArgs(query, edited_db_user).catch(() => {
+                return res.status(400).send({ msg: "Could not edit user" });
+            });
+
+            await db_c.dbEachLogDebug(db_query.getAllUsers());
+            return defaultResponse(dbRes, res, 'User edited');
+        }
+
+        return res.status(400).send({ msg: "Wrong Password" });
     }
 
     /**
@@ -133,6 +184,9 @@ const backup_control = (() => {
         },
         editPassword: async (req, res) => {
             return await editPassword(req, res);
+        },
+        editUserDynamic: async (req, res) => {
+            return await editUserDynamic(req, res);
         }
     };
 })();
