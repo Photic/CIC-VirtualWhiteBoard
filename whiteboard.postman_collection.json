@@ -40,6 +40,40 @@
 			"response": []
 		},
 		{
+			"name": "edit user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"team\" : \"moderator\",\n    \"user\" : \"Sam@this.whiteboard.com\"\n}\n\n// Refres browser and Sam can edit all posts.",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "0.0.0.0:8080/api/v1/user/edit",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"edit"
+					]
+				},
+				"description": "create new user."
+			},
+			"response": []
+		},
+		{
 			"name": "smallPost image only",
 			"request": {
 				"method": "POST",
@@ -146,6 +180,52 @@
 				"body": {
 					"mode": "raw",
 					"raw": "{\n    \"cols\" : 20,\n    \"rows\" : 17,\n    \"title\" : \"IBM Coding\", \n    \"body\" : \"International Business Machines Corporation er en multinational teknologi- og konsulentvirksomhed, der leverer IT-serviceydelser og sælger hardware- og softwareprodukter, der hovedsageligt er udviklet i IBM's forsknings- og udviklingslaboratorier\",\n    \"team\" : \"IBM\",\n    \"picture\" : \"https://socialtansvar.dk/media/815a25da-be41-4f44-b2ef-963ad6b5cbc1/balwqQ/Fonden%20for%20Socialt%20Ansvar/Samarbejdspartnere/IBM%20logo.png?w=848&h=360&action=crop\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "0.0.0.0:8080/api/v1/grid/large/new",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"grid",
+						"large",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "largePost Video",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsImlhdCI6MTYxNTI0MTIxNH0.Qrzk2m_iBWwrbfkpHgbSM2s76K69Ncxk0huH-wJ600s",
+						"type": "text"
+					},
+					{
+						"key": "Content-type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"cols\" : 20,\n    \"rows\" : 21,\n    \"title\" : \"Rick Astley's\", \n    \"body\" : \"As most people who have spent time on the internet know, Rick rolling is when a link to some relevant site or information is swapped with a link to Astley's 1987 single, “Never Gonna Give You Up”\",\n    \"team\" : \"Rick Rolling\",\n    \"picture\" : \"https://www.youtube.com/embed/dQw4w9WgXcQ\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
