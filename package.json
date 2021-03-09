@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "init": "npm install && npm install --prefix ./server",
     "dev": "ng serve --proxy-config proxy.config.json",
     "build": "ng build && docker build -t nullergrisen/whiteboard-app ./server",
     "test": "ng test",

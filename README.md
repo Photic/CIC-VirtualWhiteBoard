@@ -1,5 +1,22 @@
 # WhiteboardApp
 
+- [WhiteboardApp](#whiteboardapp)
+  - [Completed Backend](#completed-backend)
+  - [Completed Frontend](#completed-frontend)
+- [Init node_modules](#init-node_modules)
+- [Running](#running)
+- [Building to Docker](#building-to-docker)
+- [Using](#using)
+- [CIC-IBM Description of the Virtual white board](#cic-ibm-description-of-the-virtual-white-board)
+  - [Roles](#roles)
+  - [Description](#description)
+  - [Tasks](#tasks)
+    - [Login](#login)
+    - [Virtual board](#virtual-board)
+    - [Role management](#role-management)
+    - [Account management](#account-management)
+    - [Note on roles](#note-on-roles)
+
 ## Completed Backend
     - Sam and Bertha wants to use the virtual whiteboard, to do this they must first login with the team given login
     - Sam wants to create a new piece of text to put onto the virtual board so that he can write a motivational text, he wants it to be as long as a tweet 
@@ -10,6 +27,57 @@
     - Sam and Bertha wants to use the virtual whiteboard, to do this they must first login with the team given login
     - Sam and Bertha are sick and tired of random people deleting their posts, they want their own logins and to only be able to delete their own posts
     - Sam wants to create a new piece of text to put onto the virtual board so that he can write a motivational text, he wants it to be as long as a tweet 
+
+# Init node_modules
+This is a project created with Angular / Angular Materials, nodejs / Express. So the project requires the latest version of nodejs install on the local machine or docker. 
+
+To initiate the project, run following:
+```
+npm run init
+``` 
+
+In the default directory "./" where Angular´s package.json resides.
+
+# Running
+Skip if not running nodejs.
+
+Opening 2 terminal, and typing in:
+```
+npm run dev
+```
+In:
+```
+./
+and
+./server
+```
+
+Will run the "ng-serve" with an attached proxy connection and "nodemon ." which restarts the server with every code change made.
+
+# Building to Docker
+In the default directory, run:
+
+```
+npm run build
+```
+
+This will not only build the angular project, but it will also begin the build process of the Dockerfile within the ./server folder. It goes without saying that this step required Docker to be installed on the local machine. 
+
+After the script has run, you should be able to see the docker image with:
+```
+docker images
+```
+
+To run the image enter:
+```
+docker run --restart=always --hostname whiteboard-app --name=whiteboard-app --publish=:8080:8080 --detach nullergrisen/whiteboard-app
+```
+
+The server will be running at http://0.0.0.0:8080
+
+# Using
+
+Bertha@this.whiteboard.com
 
 # CIC-IBM Description of the Virtual white board
 

@@ -1,5 +1,3 @@
-const { getSourceMapRange } = require('typescript');
-
 const sqlite_control = (() => {
     // ? private
 

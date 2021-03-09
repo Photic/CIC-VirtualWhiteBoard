@@ -2,7 +2,7 @@
 # RUN ME => "docker run --restart=always --hostname whiteboard-app --name=whiteboard-app --memory=64m --cpuset-cpus=3 --net photicnet --ip 10.0.0.5 --publish=:49161:8080 --detach nullergrisen/whiteboard-app"
 
 # Specify node version.
-FROM node:14.5.0-slim
+FROM node:15.11.0-slim
 # FROM node
 
 # Auther / Maintainer.
