@@ -66,9 +66,8 @@ const backup_control = (() => {
 
     async function editUser(req, res) {
         const body = req.body;
-        const dbRes = await db_c.dbRunArgs();
-
-        
+        const dbRes = await db_c.dbRunArgs(db_query.editUserTeam(), [body.team, body.user]);
+        return defaultResponse(dbRes, res, 'User Edited');
     }
 
     async function newPassword(req, res) {

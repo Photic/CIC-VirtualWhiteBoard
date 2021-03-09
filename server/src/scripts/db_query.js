@@ -23,7 +23,7 @@ module.exports = {
     createLargePost: () => {
         return `INSERT INTO gridItems(cols, rows, title, body, team, picture, date) VALUES(?1, ?2, ?3, ?4, ?5, ?6, datetime('now', 'localtime'))`
     },
-    editUser: () => {
-        return `UPDATE users SET team = ?1 WHERE team = ?2;`
+    editUserTeam: () => {
+        return `UPDATE users SET team = ?1 WHERE username = ?2;`
     }
 }

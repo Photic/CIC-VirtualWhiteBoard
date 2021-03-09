@@ -25,6 +25,8 @@ const OAuth = (() => {
         // now we set user password to hashed password
         password = await bcrypt.hash(body.password, salt);
 
+        console.log(password);
+
         const dbRes = await db_c.dbRunArgs(db_query.createNewUser(), [body.user, password, body.team]).catch(() => {
             res.status(400).send({ msg: "User already exists" });
         });
