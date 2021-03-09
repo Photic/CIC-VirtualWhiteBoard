@@ -26,8 +26,6 @@ router.delete('/grid/post', sql.deletePost);
 
 // ! Users
 router.post('/user/get/team', sql.getUsersTeam);
-// router.post('/photoStorage', upload.array('file'), photoAPI.postPhoto);
-// router.post('/photoStorage/get', photoAPI.getPhoto);
-// router.post('/photoStorage/get/single', photoAPI.getPhoto);
+router.post('/user/edit', sql.editUser);
 
 module.exports = router;

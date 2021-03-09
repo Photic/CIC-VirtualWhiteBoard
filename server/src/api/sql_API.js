@@ -3,7 +3,8 @@ const backup_control = (() => {
 
     // ! Imports
     const db_c = require('../control/sqlite_control');
-    const db_query = require('../scripts/db_query')
+    const db_query = require('../scripts/db_query');
+    const bcrypt = require("bcrypt");
 
     // ! Functions
 
@@ -63,6 +64,22 @@ const backup_control = (() => {
         return defaultResponse(dbRes, res, 'Post Deleted');
     }
 
+    async function editUser(req, res) {
+        const body = req.body;
+        const dbRes = await db_c.dbRunArgs();
+
+        
+    }
+
+    async function newPassword(req, res) {
+        let password;
+
+        // generate salt to hash password
+        const salt = await bcrypt.genSalt(10);
+        // now we set user password to hashed password
+        password = await bcrypt.hash(body.password, salt);
+    }
+
     /**
      * @description Handles all default responses to get rid of duplicate code
      * @param {SQL.response} dbRes 
@@ -74,8 +91,6 @@ const backup_control = (() => {
         }
         return res.status(400).send({ msg: dbRes });
     }
-
-    // TODO Edit User.
 
     async function getUsersTeam(req, res) {
         return await res.json({ msg: await JSON.stringify(await db_c.dbGetArgs(db_query.getSpecificUser(), [req.body.msg])) });
@@ -97,6 +112,9 @@ const backup_control = (() => {
         },
         getUsersTeam: async (req, res) => {
             return await getUsersTeam(req, res);
+        },
+        editUser: async (req, res) => {
+            return await editUser(req, res);
         }
     };
 })();
