@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-grid-item-image',
@@ -14,11 +14,13 @@ export class GridItemImageComponent implements OnInit {
   public imageUrl: String = "";
   public body: String = "";
   public disabled: boolean = true;
+  public safeURL: any;
+  public imageOrVide: boolean = true;
 
   @Input() public item: any;
   @Output() public event = new EventEmitter();
 
-  constructor() { }
+  constructor(private sanitizer: DomSanitizer) {}
 
   public edit() {
 
@@ -40,6 +42,11 @@ export class GridItemImageComponent implements OnInit {
       this.disabled = false;
     } else if (this.item.team === undefined) {
       this.disabled = false;
+    }
+
+    if (this.item.picture != null && this.item.picture.includes('youtube')) {
+      this.safeURL = this.sanitizer.bypassSecurityTrustResourceUrl(this.item.picture);
+      this.imageOrVide = false;
     }
 
     if (localStorage.getItem('team').includes('moderator')) {

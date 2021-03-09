@@ -17,7 +17,8 @@
                 </button>
             </mat-menu>
         </mat-card-header>
-        <img mat-card-image [src]="imageUrl">
+        <iframe width="100%" height="300px" [src]='safeURL' frameborder="0" allowfullscreen *ngIf="!imageOrVide"></iframe>
+        <img mat-card-image [src]="imageUrl" *ngIf="imageOrVide">
         <mat-card-content>
             <p>
                 {{body}}

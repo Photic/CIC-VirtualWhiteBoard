@@ -65,13 +65,6 @@ const sqlite_control = (() => {
         return res;
     }
 
-    async function dbGet(query) {
-        const db = await getDb();
-        const res = await db.get(query);
-        await db.close();
-        return res;
-    }
-
     async function dbAll(query) {
         const db = await getDb();
         const res = await db.all(query);

@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { CompactType, DisplayGrid, Draggable, GridsterConfig, GridsterItem, GridType, PushDirections, Resizable } from 'angular-gridster2';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { CompactType, DisplayGrid, GridsterItem, GridType } from 'angular-gridster2';
 import { Observable } from 'rxjs';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { HttpFetchService } from 'src/app/service/http-fetch.service';
@@ -32,7 +32,6 @@ export class MessageGridComponent implements OnInit, OnDestroy {
     } else {
       this.whiteboard.push({cols: 20, rows: 24, x: 0, y: 0});
     }
-    
   }
 
   changedOptions(): void {
