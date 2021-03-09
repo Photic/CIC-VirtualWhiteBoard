@@ -1,12 +1,17 @@
 # WhiteboardApp
 
+The plan was to have movable boxes on a grid like system, I guess that is kinda archived.
+
 - [WhiteboardApp](#whiteboardapp)
   - [Completed Backend](#completed-backend)
   - [Completed Frontend](#completed-frontend)
+- [Technologies Used](#technologies-used)
+  - [Server](#server)
+  - [Client](#client)
 - [Init node_modules](#init-node_modules)
 - [Running](#running)
 - [Building to Docker](#building-to-docker)
-- [Using](#using)
+- [Using the app](#using-the-app)
 - [CIC-IBM Description of the Virtual white board](#cic-ibm-description-of-the-virtual-white-board)
   - [Roles](#roles)
   - [Description](#description)
@@ -18,15 +23,81 @@
     - [Note on roles](#note-on-roles)
 
 ## Completed Backend
-    - Sam and Bertha wants to use the virtual whiteboard, to do this they must first login with the team given login
-    - Sam wants to create a new piece of text to put onto the virtual board so that he can write a motivational text, he wants it to be as long as a tweet 
-    - Sam wants to delete a post he's created, the youtube video was not as fun as he remembered it
-    - Bertha's lunch has been stolen from the fridge and would like to put an anonymous post up that tells the thief off
+  - Sam and Bertha wants to use the virtual whiteboard, to do this they must first login with the team given login
+  - Sam wants to create a new piece of text to put onto the virtual board so that he can write a motivational text, he wants it to be as long as a tweet 
+  - Sam wants to delete a post he's created, the youtube video was not as fun as he remembered it
+  - Bertha's lunch has been stolen from the fridge and would like to put an anonymous post up that tells the thief off
+  - Sam would like to become a moderator for the virtual board to make sure that bad stuff is not posted, when he is a moderator he can delete all posts
+  - Sam would like to add Jennifer as a new user of the whiteboard and give her a login 
 
 ## Completed Frontend
-    - Sam and Bertha wants to use the virtual whiteboard, to do this they must first login with the team given login
-    - Sam and Bertha are sick and tired of random people deleting their posts, they want their own logins and to only be able to delete their own posts
-    - Sam wants to create a new piece of text to put onto the virtual board so that he can write a motivational text, he wants it to be as long as a tweet 
+  - Sam and Bertha wants to use the virtual whiteboard, to do this they must first login with the team given login
+  - Sam and Bertha are sick and tired of random people deleting their posts, they want their own logins and to only be able to delete their own posts
+  - Sam wants to create a new piece of text to put onto the virtual board so that he can write a motivational text, he wants it to be as long as a tweet
+
+# Technologies Used
+
+I chose Angular because it is a framework I am familiar with, more so then React, though I do regret not going with Flutter since it is the one I know best of the 3. Thought I was afraid that since it only JUST became web stable, that there would still be some issues.
+
+I chose nodejs/express because I think it is an easy to use backend service, and I just love how JavaScript just doesn't give a F*** about syntax. That being said, I would have liked to create the server using Typescript instead, just took the easy way out. 
+
+## Server
+Used:
+  - "bcrypt": "^5.0.1",
+  - "dotenv": "^8.2.0",
+  - "express": "^4.17.1",
+  - "jsonwebtoken": "^8.5.1",
+  - "log4js": "^6.3.0",
+  - "sqlite": "^4.0.19",
+  - "sqlite3": "^5.0.2"
+
+Also Installed:
+  - "archiver": "^5.0.0",
+  - "moment": "^2.27.0",
+  - "moment-timezone": "^0.5.31",
+  - "socket.io": "^2.3.0",
+  - "socketio-jwt": "^4.6.2",
+  - "multer": "^1.4.2",
+
+## Client
+Dep Used:
+  - "@angular/animations": "~11.2.4",
+  - "@angular/cdk": "^11.2.3",
+  - "@angular/common": "~11.2.4",
+  - "@angular/compiler": "~11.2.4",
+  - "@angular/core": "~11.2.4",
+  - "@angular/forms": "~11.2.4",
+  - "@angular/material": "^11.2.3",
+  - "@angular/platform-browser": "~11.2.4",
+  - "@angular/platform-browser-dynamic": "~11.2.4",
+  - "@angular/router": "~11.2.4",
+  - "@auth0/angular-jwt": "^5.0.2",
+  - "angular-gridster2": "^11.1.3",
+  - "rxjs": "~6.6.0",
+  - "tslib": "^2.0.0",
+  - "zone.js": "~0.11.3"
+
+Dep also installed:
+  - "moment": "^2.29.1",
+
+Dev Used:
+  - "@angular-devkit/build-angular": "~0.1102.3",
+  - "@angular/cli": "~11.2.3",
+  - "@angular/compiler-cli": "~11.2.4",
+  - "@types/jasmine": "~3.6.0",
+  - "@types/node": "^12.11.1",
+  - "codelyzer": "^6.0.0",
+  - "jasmine-core": "~3.6.0",
+  - "jasmine-spec-reporter": "~5.0.0",
+  - "karma": "~6.1.0",
+  - "karma-chrome-launcher": "~3.1.0",
+  - "karma-coverage": "~2.0.3",
+  - "karma-jasmine": "~4.0.0",
+  - "karma-jasmine-html-reporter": "^1.5.0",
+  - "protractor": "~7.0.0",
+  - "ts-node": "~8.3.0",
+  - "tslint": "~6.1.0",
+  - "typescript": "~4.1.5"
 
 # Init node_modules
 This is a project created with Angular / Angular Materials, nodejs / Express. So the project requires the latest version of nodejs install on the local machine or docker. 
@@ -77,9 +148,18 @@ docker run --restart=always --hostname whiteboard-app --name=whiteboard-app --pu
 
 The server will be running at http://0.0.0.0:8080
 
-# Using
+# Using the app
 
-Bertha@this.whiteboard.com
+There are tow default users in the app:
+  - user : Bertha@this.whiteboard.com
+  - password : 1234
+
+  - user : Sam@this.whiteboard.com
+  - password : 1234
+
+Brilliant passwords, I know.
+
+For features only working for the backend, I have included a file called "whiteboard.postman_collection.json" This, as it says, is a postman collection of the endpoints you can use after login. Just remember to use the correct JWT. When you login the inspector console in your browser will show you the token to be copy pasted into postman if the default one doesn't work.
 
 # CIC-IBM Description of the Virtual white board
 
@@ -117,7 +197,7 @@ all tasks are described as "user stories" - simply put a user wants to be able t
 ### Role management
 
 * Sam would like to become a moderator for the virtual board to make sure that bad stuff is not posted, when he is a moderator he can delete all posts !
-* Sam would like to add Jennifer as a new user of the whiteboard and give her a login
+* Sam would like to add Jennifer as a new user of the whiteboard and give her a login !
 
 ### Account management
 * Sam does not like his name on the whiteboard and would like to change it to "Sam Wise" 

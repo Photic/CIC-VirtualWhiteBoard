@@ -75,6 +75,8 @@ const backup_control = (() => {
         return res.status(400).send({ msg: dbRes });
     }
 
+    // TODO Edit User.
+
     async function getUsersTeam(req, res) {
         return await res.json({ msg: await JSON.stringify(await db_c.dbGetArgs(db_query.getSpecificUser(), [req.body.msg])) });
     }

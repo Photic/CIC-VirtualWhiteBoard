@@ -1,0 +1,251 @@
+{
+	"info": {
+		"_postman_id": "e18493eb-3dad-4a50-8113-64d347a0562c",
+		"name": "whiteboard",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create new user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user\" : \"IBM@this.whiteboard.com\",\n    \"password\" : \"1234\",\n    \"team\" : \"moderator\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "0.0.0.0:8080/api/v1/new/user",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"new",
+						"user"
+					]
+				},
+				"description": "create new user."
+			},
+			"response": []
+		},
+		{
+			"name": "smallPost image only",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsImlhdCI6MTYxNTI0MTIxNH0.Qrzk2m_iBWwrbfkpHgbSM2s76K69Ncxk0huH-wJ600s",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"cols\" : 10,\n    \"rows\" : 12,\n    \"title\" : \"IBM Coding\", \n    \"team\" : \"IBM\", \n    \"picture\" : \"https://socialtansvar.dk/media/815a25da-be41-4f44-b2ef-963ad6b5cbc1/balwqQ/Fonden%20for%20Socialt%20Ansvar/Samarbejdspartnere/IBM%20logo.png?w=848&h=360&action=crop\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "0.0.0.0:8080/api/v1/grid/small/new",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"grid",
+						"small",
+						"new"
+					]
+				},
+				"description": "create new post"
+			},
+			"response": []
+		},
+		{
+			"name": "smallPost text only",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsImlhdCI6MTYxNTI0MTIxNH0.Qrzk2m_iBWwrbfkpHgbSM2s76K69Ncxk0huH-wJ600s",
+						"type": "text"
+					},
+					{
+						"key": "Content-type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"cols\" : 10,\n    \"rows\" : 14,\n    \"title\" : \"About IBM\", \n    \"body\" : \"International Business Machines Corporation er en multinational teknologi- og konsulentvirksomhed, der leverer IT-serviceydelser og sælger hardware- og softwareprodukter, der hovedsageligt er udviklet i IBM's forsknings- og udviklingslaboratorier\",\n    \"team\" : \"IBM\" \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "0.0.0.0:8080/api/v1/grid/small/new",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"grid",
+						"small",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "largePost",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsImlhdCI6MTYxNTI0MTIxNH0.Qrzk2m_iBWwrbfkpHgbSM2s76K69Ncxk0huH-wJ600s",
+						"type": "text"
+					},
+					{
+						"key": "Content-type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"cols\" : 20,\n    \"rows\" : 17,\n    \"title\" : \"IBM Coding\", \n    \"body\" : \"International Business Machines Corporation er en multinational teknologi- og konsulentvirksomhed, der leverer IT-serviceydelser og sælger hardware- og softwareprodukter, der hovedsageligt er udviklet i IBM's forsknings- og udviklingslaboratorier\",\n    \"team\" : \"IBM\",\n    \"picture\" : \"https://socialtansvar.dk/media/815a25da-be41-4f44-b2ef-963ad6b5cbc1/balwqQ/Fonden%20for%20Socialt%20Ansvar/Samarbejdspartnere/IBM%20logo.png?w=848&h=360&action=crop\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "0.0.0.0:8080/api/v1/grid/large/new",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"grid",
+						"large",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletePost",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsImlhdCI6MTYxNTI0MTIxNH0.Qrzk2m_iBWwrbfkpHgbSM2s76K69Ncxk0huH-wJ600s",
+						"type": "text"
+					},
+					{
+						"key": "Content-type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"itemId\" : 1,\n    \"team\" : \"Team 1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "0.0.0.0:8080/api/v1/grid/post",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"grid",
+						"post"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsImlhdCI6MTYxNTI0MTIxNH0.Qrzk2m_iBWwrbfkpHgbSM2s76K69Ncxk0huH-wJ600s",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
