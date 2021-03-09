@@ -103,9 +103,9 @@ Dev Used:
   - "typescript": "~4.1.5"
 
 # Init node_modules
-This is a project created with Angular / Angular Materials, nodejs / Express. So the project requires the latest version of nodejs install on the local machine or docker. 
+This is a project created with Angular / Angular Materials, nodejs / Express. So the project requires the latest version of nodejs install on the local machine and/or docker. 
 
-If only using Docker, skip to [Building to Docker](#building-to-docker).
+If using Docker, skip to [Building to Docker](#building-to-docker).
 
 To initiate the project, run following:
 ```
@@ -115,7 +115,7 @@ npm run init
 In the default directory "./" where Angular´s package.json resides.
 
 # Running
-Skip if not running nodejs.
+Skip if wanting to run in docker, go to [Building to Docker](#building-to-docker).
 
 Opening 2 terminal, and typing in:
 ```
@@ -136,7 +136,6 @@ In the default directory, run:
 ```
 npm run build
 ```
-
 This will not only build the angular project, but it will also begin the build process of the Dockerfile within the ./server folder. It goes without saying that this step required Docker to be installed on the local machine. 
 
 After the script has run, you should be able to see the docker image with:
