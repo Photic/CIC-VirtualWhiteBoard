@@ -16,6 +16,7 @@ speed-measure-plugin*.json
 
 # Build specific
 /server/public
+/server/database.db
 
 # IDEs and editors
 /.idea
