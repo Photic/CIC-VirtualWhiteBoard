@@ -7,6 +7,7 @@ const readdir = util.promisify(fs.readdir);
 
 let socketService;
 
+// Never got to use it in this project, but it works. 
 class SocketService {
     init(io) {
         this.io = io;

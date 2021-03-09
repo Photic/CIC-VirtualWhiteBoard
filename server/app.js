@@ -9,5 +9,4 @@ const logger = require('log4js').getLogger();
 logger.level = process.env.LOG_LEVEL;
 
 // Start server and socket.io
-
 expressServer.getServer();

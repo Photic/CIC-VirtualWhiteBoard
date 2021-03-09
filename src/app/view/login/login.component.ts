@@ -25,6 +25,9 @@ export class LoginComponent implements OnInit {
   ) {
   }
 
+  /**
+   * @description Login service, will receive a token from the backend that can later be used without a password.
+   */
   async login() {
     this.loginInvalid = false;
     this.formSubmitAttempt = false;
@@ -51,6 +54,9 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  /**
+   * @description Will log you in if the token you are holding is already valid
+   */
   async ngOnInit() {
     this.form = this.fb.group({
       username: ['', Validators.email],

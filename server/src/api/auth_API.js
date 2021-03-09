@@ -8,9 +8,12 @@ const OAuth = (() => {
     const db_query = require('../scripts/db_query');
     const bcrypt = require("bcrypt");
 
-    // ! Parameters
-
     // ! Functions
+    /**
+     * @description Creates a user if it does not already exits.  
+     * @param {*} req 
+     * @param {*} res 
+     */
     async function createUser(req, res) {
         const body = req.body;
 
@@ -38,6 +41,11 @@ const OAuth = (() => {
         res.status(400).send({ msg: "Internal Server Error" });
     }
 
+    /**
+     * Login service, compares non encrypted password with encrypted password in database.
+     * @param {*} req 
+     * @param {*} res 
+     */
     async function authentication(req, res) {
         try {
             const user = req.body.user;
@@ -62,6 +70,13 @@ const OAuth = (() => {
         }
     }
 
+    /**
+     * Every indexed (index.js) endpoint has to go through this authorization process.
+     * We are here comparing JWT.
+     * @param {*} req 
+     * @param {*} res 
+     * @param {*} next 
+     */
     async function authorize(req, res, next) {
         if (!req.headers.authorization) {
             res.json({ msg: 'Unauthorized: no authorization header' });

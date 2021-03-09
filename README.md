@@ -31,6 +31,7 @@ The plan was to have movable boxes on a grid like system, I guess that is kinda 
   - Sam would like to add Jennifer as a new user of the whiteboard and give her a login
   - Bertha would love if she could post a youtube video that she saw last week
   - Sam would like to be able to change his password, Bertha keeps logging in and posting for him 
+  - Sam does not like his name on the whiteboard and would like to change it to "Sam Wise"
 
 ## Completed Frontend
   - Sam and Bertha wants to use the virtual whiteboard, to do this they must first login with the team given login
@@ -161,9 +162,11 @@ There are tow default users in the app:
 
 Brilliant passwords, I know.
 
-For features only working for the backend, I have included a file called "whiteboard.postman_collection.json" This, as it says, is a postman collection of the endpoints you can use after login. Just remember to use the correct JWT. When you login the inspector console in your browser will show you the token to be copy pasted into postman if the default one doesn't work.
+For features only working for the backend, which is most, I have included a file called "whiteboard.postman_collection.json" This, as it says, is a postman collection of the endpoints you can use after login. Just remember to use the correct JWT. When you login the inspector console in your browser will show you the token to be copy pasted into postman if the default one doesn't work.
 
 # CIC-IBM Description of the Virtual white board
+
+Changed Tasks in the end of description, ! are goals I have create in either backend or frontend, ? are goals that I did not reach.
 
 ## Roles
 * Frontend
@@ -190,10 +193,10 @@ all tasks are described as "user stories" - simply put a user wants to be able t
 *  Sam wants to create a new piece of text to put onto the virtual board so that he can write a motivational text, he wants it to be as long as a tweet !
 * Bertha would like to be able to put links to images onto the board !
 * Bertha would love if she could post a youtube video that she saw last week !
-* Bertha would like to see media be rendered on the board 
+* Bertha would like to see media be rendered on the board  ?
 * Sam wants to delete a post he's created, the youtube video was not as fun as he remembered it !
-* Bertha would like to be able to put a comment on posts so that Sam can see that she's seen the post
-* Bertha would like to be able to "like" a post
+* Bertha would like to be able to put a comment on posts so that Sam can see that she's seen the post ?
+* Bertha would like to be able to "like" a post ?
 * Bertha's lunch has been stolen from the fridge and would like to put an anonymous post up that tells the thief off !
 
 ### Role management

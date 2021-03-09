@@ -1,4 +1,4 @@
-
+// Made to handle image meta data.
 export class PhotoModel {
     constructor(
         public originalname: string,

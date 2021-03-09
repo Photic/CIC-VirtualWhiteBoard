@@ -3,8 +3,9 @@ const logger = require('log4js').getLogger();
 let server;
 class Server {
     constructor(_port) {
+        // Attempt at better error handling
         process.on('unhandledRejection', (reason, p) => {
-            console.log(`Unhandled Rejection at: Promise ${p} 'reason: ${reason}'`);
+            logger.error(`Unhandled Rejection at: Promise ${p} 'reason: ${reason}'`);
         });
         this.port = _port;
         this._config();
@@ -21,8 +22,8 @@ class Server {
         this.app.use('/api/v1', api);
 
         // Static dir
-        this.app.use(express.static(process.cwd() + "/public/whiteboard-app"));
-        this.app.use(express.static(__dirname + '/uploads'));
+        this.app.use(express.static(process.cwd() + "/public/whiteboard-app")); 
+        this.app.use(express.static(__dirname + '/uploads')); // Was meant for file uploads, like images to be stored.
 
         this.app.get('*', (req, res) => {
             res.sendFile(process.cwd() + '/public/whiteboard-app/index.html');
@@ -38,7 +39,7 @@ class Server {
         });
         socketService.init(this.sio);
 
-        const HOST = (process.env.HOST || '0.0.0.0');
+        const HOST = (process.env.HOST || '0.0.0.0'); // default host 0.0.0.0
 
         this.server.listen(this.port, () => {
             logger.info(`Running on http://${HOST}:${this.port}`);

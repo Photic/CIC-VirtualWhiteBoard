@@ -12,6 +12,11 @@ export class HttpFetchService {
 
   constructor(private http: HttpClient) { }
 
+  /**
+   * @description Generic Auth service. 
+   * @param url 
+   * @param object 
+   */
   public postAuth<T>(url: string, object: any) {
     return this.http.post<T>(url, object, {
       headers: new HttpHeaders({
@@ -23,6 +28,11 @@ export class HttpFetchService {
     );
   }
 
+  /**
+   * @description Generic post service.
+   * @param url 
+   * @param object 
+   */
   public post<T>(url: string, object: any) {
     return this.http.post<T>(url, object, {
       headers: new HttpHeaders({
@@ -35,6 +45,10 @@ export class HttpFetchService {
     );
   }
 
+  /**
+   * @description Generic get service.
+   * @param url 
+   */
   public get<T>(url: string): Observable<T> {
     return this.http.get<T>(url, {
       headers: new HttpHeaders({
@@ -49,6 +63,11 @@ export class HttpFetchService {
     );
   }
 
+  /**
+   * @description Generic postData service, would have been used to send files to the backend.
+   * @param url 
+   * @param object 
+   */
   public postData<T>(url: string, object: File) {
     let formData: FormData = new FormData();
     formData.append('file', object, object.name);
@@ -63,8 +82,15 @@ export class HttpFetchService {
     );
   }
 
-  public postGet(url: string, body: any) {
+  /**
+   * @description a more specific data sending service, a normal type could be of type 'blob'
+   * @param url 
+   * @param type 
+   * @param body 
+   */
+  public postGet(url: string, type: any, body: any) {
     return this.http.post(url, body, {
+      responseType: type,
       headers: new HttpHeaders({
         'Authorization': localStorage.getItem('token'),
       })
@@ -74,6 +100,11 @@ export class HttpFetchService {
     );
   }
 
+  /**
+   * @description Get data from the backend, would have been used to get images back from the backend later on.
+   * @param url 
+   * @param type 
+   */
   public getData(url: string, type: any) {
     return this.http.get(url, {
       responseType: type,

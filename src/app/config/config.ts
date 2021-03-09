@@ -1,7 +1,6 @@
 export class API {
 
-    // TODO - Change token to come from local storage.
-
+    // Just nice to have API endpoints in one place.
 
     // sql //
     static get_posts = '/api/v1/grid/get'

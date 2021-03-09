@@ -20,12 +20,11 @@ export class MessageGridComponent implements OnInit, OnDestroy {
 
   constructor(private fetch: HttpFetchService) { }
 
-  removeItem($event: MouseEvent | TouchEvent, item): void {
-    $event.preventDefault();
-    $event.stopPropagation();
-    this.whiteboard.splice(this.whiteboard.indexOf(item), 1);
-  }
-
+  /**
+   * @description Setup in ngOnInit, this adds items to the grid when clicked.
+   * Like the edit option in grid-item-image, this is missing the same window to edit a newly formed grid element.
+   * @param event
+   */
   private addItem(event): void {
     if (event === 1) {
       this.whiteboard.push({cols: 10, rows: 12, x: 0, y: 0});
@@ -34,6 +33,9 @@ export class MessageGridComponent implements OnInit, OnDestroy {
     }
   }
 
+  /**
+   * Default function from gridster.
+   */
   changedOptions(): void {
     if (this.options.api && this.options.api.optionsChanged) {
       console.log('resize');
@@ -41,10 +43,17 @@ export class MessageGridComponent implements OnInit, OnDestroy {
     }
   }
 
+  /**
+   * @description Was meant to be used to handle events from a grid item.
+   * @param $event 
+   */
   eventHandler($event) {
     console.log($event);
   }
 
+  /**
+   * @description Initiate gridster2 with all its bless and wiesel's
+   */
   async ngOnInit() {
     this.options = {
       gridType: GridType.Fixed,
@@ -97,17 +106,21 @@ export class MessageGridComponent implements OnInit, OnDestroy {
       scrollToNewItems: false
     };
 
+    // Init dashboard
     this.whiteboard = [];
 
+    // Add items to the dashboard gotten from the backend
     this.fetch.get(API.get_posts).subscribe((res) => {
       JSON.parse(res['msg']).forEach(element => {
         this.whiteboard.push(element);
       });
     });
 
+    // Our eventObserver from the navbar.component, every click fires this.addItem() with the event
     this.eventsSubscription = this.events.subscribe((event) => this.addItem(event));
   }
 
+  // Make sure to unsubscribe if the page is not needed anymore.
   ngOnDestroy(): void {
     this.eventsSubscription.unsubscribe();
   }

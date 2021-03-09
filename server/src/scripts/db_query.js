@@ -1,3 +1,4 @@
+// The list kinda speaks for it self. Central place for DB query's.
 module.exports = {
     getSpecificUser: () => {
         return 'SELECT * FROM users WHERE username = ?';

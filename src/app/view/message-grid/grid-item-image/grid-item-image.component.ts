@@ -22,14 +22,24 @@ export class GridItemImageComponent implements OnInit {
 
   constructor(private sanitizer: DomSanitizer) {}
 
+  /**
+   * @description Would have been used to launch a new window with editing options
+   */
   public edit() {
 
   }
 
+  /**
+   * @description Would have been used to straight up delete an element, given the right permissions.
+   */
   public delete() {
     
   }
 
+  /**
+   * @description Handles the storing of data from the item object to local variables.
+   * This is not necessary, just like the control I guess.
+   */
   ngOnInit(): void {
     this.title = this.item.title;
     this.subtitle = this.item.team;
@@ -38,6 +48,7 @@ export class GridItemImageComponent implements OnInit {
     
     console.log(this.item.body);
     
+    // My hackey way of insuring who can "edit" what, this is only a visual change atm.
     if (localStorage.getItem('team').includes(this.item.team) || localStorage.getItem('team').includes(localStorage.getItem('user'))) {
       this.disabled = false;
     } else if (this.item.team === undefined) {

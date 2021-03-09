@@ -8,19 +8,27 @@ const sqlite_control = (() => {
     const fs = require('fs');
 
     // ! Parameters
-    const dbName = 'database.db'
+    const dbName = 'database.db' // Stop magical names
 
     // ! Functions
+    // Check for the database locally, if it is not there we create it. 
     const files = fs.readdirSync('./', (err, files) => files);
     if (!files.includes(dbName)) {
         initDb();
     }
 
+    /**
+     * @description does as it says, initiate the database
+     */
     async function initDb() {
         const db = await getDb();
         initTables(db);
     }
 
+    /**
+     * @description Create tables and some default values, to not have an empty UI.
+     * @param {*} db 
+     */
     async function initTables(db) {
         await db.exec(`CREATE TABLE IF NOT EXISTS users(username TEXT UNIQUE, password TEXT, team TEXT, name TEXT)`);
         await db.exec(`CREATE TABLE IF NOT EXISTS gridItems(cols INTEGER, rows INTEGER, y INTEGER DEFAULT 0, x INTEGER DEFAULT 0, itemId INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, body TEXT, team TEXT, picture TEXT, date TEXT)`);
@@ -36,13 +44,20 @@ const sqlite_control = (() => {
         await showTables(db);
     }
 
+    /**
+     * @description More a debug function then anything else, just visually inspect if everything has been created.
+     * @param {*} db 
+     */
     async function showTables(db) {
-        await db.each("SELECT name FROM sqlite_master WHERE type='table'", (e, d) => logger.info(d));
-        await db.each("SELECT * FROM users", (e, d) => logger.info(d));
-        await db.each("SELECT * FROM gridItems", (e, d) => logger.info(d));
+        await db.each("SELECT name FROM sqlite_master WHERE type='table'", (e, d) => logger.debug(d));
+        await db.each("SELECT * FROM users", (e, d) => logger.debug(d));
+        await db.each("SELECT * FROM gridItems", (e, d) => logger.debug(d));
         await db.close();
     }
 
+    /**
+     * @description Generic function to open a database connection. 
+     */
     async function getDb() {
         const db = await open({
             filename: `./${dbName}`,
@@ -51,6 +66,11 @@ const sqlite_control = (() => {
         return db;
     }
 
+   /**
+    * @description Get something from the database with attached arguments to specify what to get.
+    * @param {string} query 
+    * @param {array} args 
+    */ 
     async function dbGetArgs(query, args) {
         const db = await getDb();
         const res = await db.get(query, args);
@@ -58,6 +78,11 @@ const sqlite_control = (() => {
         return res;
     }
 
+    /**
+     * @description Exec something in the database with attached arguments.
+     * @param {string} query 
+     * @param {array} args 
+     */
     async function dbQueryArgs(query, args) {
         const db = await getDb();
         const res = await db.exec(query, args);
@@ -65,6 +90,10 @@ const sqlite_control = (() => {
         return res;
     }
 
+    /**
+     * @description Queary a large number of items, e.x SELECT * FROM
+     * @param {string} query 
+     */
     async function dbAll(query) {
         const db = await getDb();
         const res = await db.all(query);
@@ -72,6 +101,12 @@ const sqlite_control = (() => {
         return res;
     }
 
+    /**
+     * @description Most used and most versatile, accepts most commands.
+     * Same here, attached arguments to go through some kind of db sanitizer.
+     * @param {string} query 
+     * @param {array} args 
+     */
     async function dbRunArgs(query, args) {
         const db = await getDb();
         const res = await db.run(query, args);
@@ -79,6 +114,10 @@ const sqlite_control = (() => {
         return res;
     }
 
+    /**
+     * @description Again mostly for debugging, its just handy to be able to get elements printed.
+     * @param {string} query 
+     */
     async function dbEachLogDebug(query) {
         const db = await getDb();
         const res = await db.each(query, (e, d) => {logger.debug(d)});
